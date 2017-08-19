@@ -16,5 +16,15 @@ pipeline {
         sh 'mvn test'
       }
     }
+    stage('build') {
+      steps {
+        sh 'mvn package'
+      }
+    }
+    stage('artifact save') {
+      steps {
+        archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/')
+      }
+    }
   }
 }
