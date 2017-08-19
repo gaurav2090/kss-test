@@ -22,7 +22,8 @@ pipeline {
       }
     }
     stage ('Docker Build') {
-    sh "docker build -t kss-docker ."
+      steps{
+        sh "docker build -t kss-docker ."
         image.push()
       }   
 }
