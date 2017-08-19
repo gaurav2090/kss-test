@@ -24,7 +24,6 @@ pipeline {
     stage ('Docker Build') {
       steps{
         sh "docker build -t kss-docker ."
-        image.push()
       }   
 }
     stage('artifact save') {
