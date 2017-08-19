@@ -22,10 +22,10 @@ pipeline {
       }
     }
     stage('Docker Build') {
-      agent master{
+      agent master
       steps {
         sh 'docker build -t kss-docker /tmp/Dockerfile'
-      }
+      
       }}
     stage('artifact save') {
       steps {
