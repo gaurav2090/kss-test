@@ -21,6 +21,11 @@ pipeline {
         sh 'mvn package'
       }
     }
+    stage ('Docker Build') {
+    sh "docker build -t kss-docker ."
+        image.push()
+      }   
+}
     stage('artifact save') {
       steps {
         archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/')
