@@ -25,8 +25,8 @@ pipeline {
       agent any
       steps {
         sh 'docker build -t kss-docker /tmp/Dockerfile'
-      
-      }}
+      }
+    }
     stage('artifact save') {
       steps {
         archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/')
