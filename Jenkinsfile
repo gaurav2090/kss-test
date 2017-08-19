@@ -22,7 +22,7 @@ pipeline {
       }
     }
     stage('Docker Build') {
-      agent master
+      agent any
       steps {
         sh 'docker build -t kss-docker /tmp/Dockerfile'
       
