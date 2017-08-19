@@ -24,9 +24,13 @@ pipeline {
     stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t kss-docker /tmp/Dockerfile'
-      }
-    }
+       withDockerRegistry([credentialsId: 'c0e73978-1098-4097-8a23-7fa2aa508313', url: "https://hub.docker.com/"]) {
+
+               script {
+       
+             def image = docker.build("gaurav2090/kss:latest",'.')
+             image.push()
+               }}}}
     stage('artifact save') {
       steps {
         archiveArtifacts(allowEmptyArchive: true, artifacts: 'target/**/')
